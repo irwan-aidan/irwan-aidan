@@ -1,4 +1,5 @@
 # Config file contents referred to as "/path/to/proxysql.cnf"
+#  /path/to/proxysql.cnf:/etc/proxysql.cnf 
 datadir="/var/lib/proxysql"
 
 admin_variables=
