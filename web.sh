@@ -12,7 +12,7 @@ apt-get update; apt-get -y upgrade;
 
 # install webserver extensions
 apt-get -y install nginx
-apt-get -y install php7.0-fpm php7.0-cli libssh2-1 php-ssh2 php7.0
+apt-get -y install php7.4-fpm php7.4-cli libssh2-1 php-ssh2 php7.4
 
 
 # install essential package
@@ -29,7 +29,7 @@ if [ $(cat /etc/debian_version) == '10.9' ]; then
   apt -y --purge remove apache2*;
   apt -y install nginx
   apt -y install php-fpm php-cli libssh2-1 php-ssh2 php
-  sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.3/fpm/pool.d/www.conf
+  sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
   rm /etc/nginx/sites-enabled/default
   rm /etc/nginx/sites-available/default
   wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/JanganCrut/Deb9-10/main/Resources/Other/nginx.conf"
@@ -37,7 +37,7 @@ if [ $(cat /etc/debian_version) == '10.9' ]; then
   wget -O /etc/nginx/conf.d/monitoring.conf "https://raw.githubusercontent.com/JanganCrut/Deb9-10/main/Resources/Other/monitoring.conf"
   mkdir -p /home/vps/public_html
   wget -O /home/vps/public_html/index.php "https://raw.githubusercontent.com/JanganCrut/Deb9-10/main/Resources/Panel/index.php"
-  service php7.3-fpm restart
+  service php7.4-fpm restart
   service nginx restart
 elif [ $(cat /etc/debian_version) == '9.13' ]; then
   VERSION=9.13
@@ -121,7 +121,7 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/dropbear restart
 /etc/init.d/fail2ban restart
 /etc/init.d/stunnel4 restart
-service php7.0-fpm restart
+service php7.4-fpm restart
 service uwsgi restart
 systemctl daemon-reload
 service squid restart
